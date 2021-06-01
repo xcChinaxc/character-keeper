@@ -2,13 +2,13 @@
 
 **Purpose:** Character Keeper is an application that users can use to track character notes for MMOs, table-top games, and more. Application was built using MVC architecture. <br />
 <a target="_blank" href="https://github.com/xcChinaxc/character-keeper">Repo</a> //
-<a target="_blank" href="#">Demo Site (not yet available)</a>
+<a target="_blank" href="https://git.heroku.com/cr-character-keeper.git">Demo Site</a>
 
 ## How It's Made
 
 **Tech used:** HTML, CSS, JavaScript, Embedded JavaScript, Node.js, Express, MongoDB, Cloudinary <br />
 
-## Get It Running Yourself
+### Get It Running Yourself
 
 `npm install`
 
