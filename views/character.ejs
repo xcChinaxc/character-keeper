@@ -1,0 +1,18 @@
+<%- include('partials/header') -%>
+<div class="container">
+  <div class="row mt-5">
+    <div>
+      <h2><%= characters.name %> of <%= characters.game %> </h2>
+      <img class="card" src="<%= characters.image%>" />
+    </div>
+    <div class="col-6">
+      <p><%= characters.notes %></p>
+    </div>
+    <div class="mt-5">
+      <a class="btn btn-primary" href="/profile">Return to Profile</a>
+      <a class="btn btn-primary" href="/feed">Return to Feed</a>
+    </div>
+  </div>
+</div>
+
+<%- include('partials/footer') -%>
