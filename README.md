@@ -12,7 +12,7 @@
 
 `npm install`
 
-### Things to add
+#### Things to add
 
 - In the config folder, create a `.env` file and add the following as `key = value`
   - PORT = 2121 (can be any port example: 3000)

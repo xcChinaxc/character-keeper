@@ -100,4 +100,19 @@ module.exports = {
       res.redirect('/dashboard');
     }
   },
+  editCharacter: async (req, res) => {
+    try {
+      console.log(req.body)
+      await Character.findOneAndUpdate({ _id: req.params.id }, { name: req.body.name, game: req.body.game,
+        notes: req.body.notes}, 
+        {
+          new: true,
+          runValidators: true
+        })
+      console.log('Character has been editted!')
+      location.reload();
+    } catch (err) {
+      res.redirect('/dashboard')
+    }
+  },
 };

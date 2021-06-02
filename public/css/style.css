@@ -1,4 +1,8 @@
 /* Utilities */
+#notes-container {
+  height: 130px;
+}
+
 .card {
   max-width: 10em;
   background-color: #fff;

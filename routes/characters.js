@@ -15,6 +15,7 @@ router.post(
 
 router.put('/favoriteCharacter/:id', charactersController.favoriteCharacter);
 router.put('/unfavoriteCharacter/:id', charactersController.unfavoriteCharacter);
+router.put('/editCharacter/:id', charactersController.editCharacter);
 
 router.delete('/deleteCharacter/:id', charactersController.deleteCharacter);
 
