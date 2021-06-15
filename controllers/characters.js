@@ -30,6 +30,16 @@ module.exports = {
       console.log(err);
     }
   },
+  getNewChar: async (req, res) => {
+    try {
+      const characters = await Character.find()
+        .sort({ favorite: 'desc', createdAt: 'desc' })
+        .lean();
+      res.render('newchar.ejs', { characters: characters, user: req.user });
+    } catch (err) {
+      console.log(err);
+    }
+  },
   getCharacter: async (req, res) => {
     try {
       const characters = await Character.findById(req.params.id);
