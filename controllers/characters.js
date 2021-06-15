@@ -56,6 +56,7 @@ module.exports = {
       res.redirect('/dashboard');
     } catch (err) {
       console.log(err);
+      res.render('error/404.ejs')
     }
   },
   favoriteCharacter: async (req, res) => {
@@ -86,25 +87,15 @@ module.exports = {
       console.log(err);
     }
   },
-  deleteCharacter: async (req, res) => {
-    try {
-      // Find post by id
-      let characters = await Character.findById({ _id: req.params.id });
-      // Delete image from cloudinary
-      await cloudinary.uploader.destroy(characters.cloudinaryId);
-      // Delete post from db
-      await Character.remove({ _id: req.params.id });
-      console.log('Deleted Character');
-      res.redirect('/dashboard');
-    } catch (err) {
-      res.redirect('/dashboard');
-    }
-  },
   editCharacter: async (req, res) => {
     try {
       console.log(req.body)
-      await Character.findOneAndUpdate({ _id: req.params.id }, { name: req.body.name, game: req.body.game,
-        notes: req.body.notes}, 
+      await Character.findOneAndUpdate(
+        { _id: req.params.id }, {
+          name: req.body.name, 
+          game: req.body.game,
+          notes: req.body.quillNotes
+        },
         {
           new: true,
           runValidators: true
@@ -112,7 +103,21 @@ module.exports = {
       console.log('Character has been editted!')
       location.reload();
     } catch (err) {
-      res.redirect('/dashboard')
+      res.redirect('/dashboard');
+    }
+  },
+  deleteCharacter: async (req, res) => {
+    try {
+      // Find character by id
+      let characters = await Character.findById({ _id: req.params.id });
+      // Delete image from cloudinary
+      await cloudinary.uploader.destroy(characters.cloudinaryId);
+      // Delete character from db
+      await Character.remove({ _id: req.params.id });
+      console.log('Deleted Character');
+      res.redirect('/dashboard');
+    } catch (err) {
+      res.render('error/404.ejs')
     }
   },
 };
