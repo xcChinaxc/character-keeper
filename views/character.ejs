@@ -47,12 +47,20 @@
 
 <!-- Initialize Quill editor -->
 <script>
+  var Delta = Quill.import('delta');
   var quill = new Quill('#notes-container', {
     theme: 'snow'
   });
 
   var form = document.querySelector('form');
+  var change = new Delta();
 
+  // Store accumulated changes
+  quill.on('text-change', function(delta) {
+    change = change.compose(delta);
+  });
+
+  // Submit form
   form.onsubmit = function() {
   // Populate hidden form on submit
   var quillNotes = document.querySelector('input[name=quillNotes]');
