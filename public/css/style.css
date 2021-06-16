@@ -3,7 +3,7 @@
   height: 130px;
 }
 
-.card {
+/* .card {
   max-width: 10em;
   background-color: #fff;
   color: #333;
@@ -11,7 +11,7 @@
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
   padding: 20px;
   margin: 10px;
-}
+} */
 
 .avatar {
   vertical-align: middle;
@@ -21,7 +21,7 @@
 }
 
 /* Characters */
-.chars .card {
+/* .chars .card {
   text-align: right;
   margin: 18px 10px;
   flex-wrap: wrap;
@@ -35,4 +35,4 @@
 
 .chars .card:hover {
   transform: translateY(-15px);
-}
+} */
