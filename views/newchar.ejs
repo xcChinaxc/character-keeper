@@ -1,34 +1,73 @@
 <%- include('partials/navheader') -%>
 
-<!-- Welcome Div -->
-<section class="py-3 text-center container">
-  <div class="row py-lg-3">
-    <div class="col-lg-6 col-md-8 mx-auto">
-      <h1 class="fw-light">Create Character</h1>
-    </div>
-  </div>
-</section class="container">
+<main class="py-5 container">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-10 col-lg-8">    
+      <!-- Card -->
+      <div class="card card-border border-muted shadow-light-lg" data-jarallax-element="-40" style="z-index: 0; transform: translate3d(0px, 16.1003px, 0px);">
+        <div class="card-body">
+          <div class="row justify-content-center">
+            <div class="col-12 col-xl-11">
 
-<section class="container">
-  <div>
-    <form action="/post/createCharacter" enctype="multipart/form-data" method="POST">
-      <div class="mb-3">
-          <label for="name" class="form-label">Name</label>
-          <input type="text" class="form-control" id="name" name="name">
-      </div>
-      <div class="mb-3">
-        <label for="game" class="form-label">Game Name</label>
-        <input type="text" class="form-control" id="game" name="game">
-      </div>
-      <div class="mb-3">
-        <label for="notes" class="form-label">Notes</label>
-        <textarea class="form-control" id="notes" name="notes"></textarea>
-      </div>
-      <div class="mb-3">
-        <label for="imgUpload" class="form-label">Image</label>
-        <input type="file" class="form-control" id="imageUpload" name="file">
-      </div>
-      <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
-    </form>
-  </div>
-</section>
+              <!-- Heading -->
+              <h2 class="fw-light text-center mb-1">
+                Create Character
+              </h2>
+
+              <!-- Text -->
+              <p class="fs-lg text-center text-muted mb-6 mb-md-8">
+                Here is some text to change later
+              </p>
+
+              <!-- Log In Form Section -->
+              <!-- errors -->
+              <% if (locals.messages.errors) { %> 
+                <% messages.errors.forEach( el => { %>
+                  <div class="alert alert-danger">
+                    <%= el.msg %>
+                  </div>
+                <% }) %> 
+              <% } %> <% if (locals.messages.info) { %> 
+                <% messages.info.forEach( el => { %>
+                  <div class="alert alert-info">
+                    <%= el.msg %>
+                  </div>
+              <% }) %> <% } %>
+
+              <!-- Create Character Form -->
+              <form action="/post/createCharacter" enctype="multipart/form-data" method="POST">
+                <div class="mb-3">
+                  <label for="name" class="form-label">
+                      Name
+                  </label>
+                  <input type="text" class="form-control" id="name" name="name">
+                </div>
+                <div class="mb-3">
+                  <label for="game" class="form-label">
+                    Game Name
+                  </label>
+                  <input type="text" class="form-control" id="game" name="game">
+                </div>
+                <div class="mb-3">
+                  <label for="notes" class="form-label">
+                    Notes
+                  </label>
+                  <textarea class="form-control" id="notes" name="notes"></textarea>
+                </div>
+                <div class="mb-3">
+                  <label for="imgUpload" class="form-label">
+                    Image
+                  </label>
+                  <input type="file" class="form-control" id="imageUpload" name="file">
+                </div>
+                <button type="submit" class="btn btn-primary mt-3 w-100" value="Upload">Create Character</button>
+              </form>
+            </div> <!-- col-12 -->
+          </div> <!-- row -->
+        </div> <!-- card-body -->
+      </div> <!-- card -->
+    </div> <!-- col-12 -->
+  </div> <!-- row -->
+</main>
+
+<%- include('partials/footer') -%>

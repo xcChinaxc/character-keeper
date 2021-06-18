@@ -1,40 +1,72 @@
 <%- include('partials/header') -%>
 
-<main class="container">
+<main class="py-5 container">
   <div class="row justify-content-center">
-    <section class="col-6 mt-5">
-      <% if (locals.messages.errors) { %> <% messages.errors.forEach( el => { %>
-      <div class="alert alert-danger"><%= el.msg %></div>
-      <% }) %> <% } %> <% if (locals.messages.info) { %> <%
-      messages.info.forEach( el => { %>
-      <div class="alert alert-info"><%= el.msg %></div>
-      <% }) %> <% } %>
-      <form action="/login" method="POST">
-        <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label"
-            >Email address</label
-          >
-          <input
-            type="email"
-            class="form-control"
-            id="exampleInputEmail1"
-            aria-describedby="emailHelp"
-            name="email"
-          />
-        </div>
-        <div class="mb-3">
-          <label for="exampleInputPassword1" class="form-label">Password</label>
-          <input
-            type="password"
-            class="form-control"
-            id="exampleInputPassword1"
-            name="password"
-          />
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
-    </section>
-  </div>
+    <div class="col-12 col-md-10 col-lg-8">    
+      <!-- Card -->
+      <div class="card card-border border-muted shadow-light-lg" data-jarallax-element="-40" style="z-index: 0; transform: translate3d(0px, 16.1003px, 0px);">
+        <div class="card-body">
+          <div class="row justify-content-center">
+            <div class="col-12 col-xl-11">
+
+              <!-- Heading -->
+              <h2 class="fw-bold text-center mb-1">
+                Log In
+              </h2>
+
+              <!-- Text -->
+              <p class="fs-lg text-center text-muted mb-6 mb-md-8">
+                Your character is awaiting their next adventure!
+              </p>
+
+              <!-- Log In Form Section -->
+              <!-- errors -->
+              <% if (locals.messages.errors) { %> 
+                <% messages.errors.forEach( el => { %>
+                  <div class="alert alert-danger">
+                    <%= el.msg %>
+                  </div>
+                <% }) %> 
+              <% } %> <% if (locals.messages.info) { %> 
+                <% messages.info.forEach( el => { %>
+                  <div class="alert alert-info">
+                    <%= el.msg %>
+                  </div>
+              <% }) %> <% } %>
+
+              <!-- Log In Form -->
+              <form action="/login" method="POST">
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="exampleInputEmail1"
+                    aria-describedby="emailHelp"
+                    name="email"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label">
+                    Password
+                  </label>
+                  <input
+                    type="password"
+                    class="form-control"
+                    id="exampleInputPassword1"
+                    name="password"
+                  />
+                </div>
+                <button type="submit" class="btn btn-primary mt-3 w-100">Log In</button>
+              </form>
+            </div> <!-- col-12 -->
+          </div> <!-- row -->
+        </div> <!-- card-body -->
+      </div> <!-- card -->
+    </div> <!-- col-12 -->
+  </div> <!-- row -->
 </main>
 
 <%- include('partials/footer') -%>
