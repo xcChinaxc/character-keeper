@@ -2,37 +2,3 @@
 #notes-container {
   height: 130px;
 }
-
-/* .card {
-  max-width: 10em;
-  background-color: #fff;
-  color: #333;
-  border-radius: 10px;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
-  padding: 20px;
-  margin: 10px;
-} */
-
-.avatar {
-  vertical-align: middle;
-  width: 75px;
-  height: 75px;
-  border-radius: 50%;
-}
-
-/* Characters */
-/* .chars .card {
-  text-align: right;
-  margin: 18px 10px;
-  flex-wrap: wrap;
-  transition: transform 0.2s ease-in;
-}
-
-.chars .card h4 {
-  font-size: 20px;
-  margin-bottom: 10px;
-}
-
-.chars .card:hover {
-  transform: translateY(-15px);
-} */
