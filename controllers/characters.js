@@ -2,10 +2,10 @@ const cloudinary = require('../middleware/cloudinary');
 const Character = require('../models/Character');
 
 module.exports = {
-  getProfile: async (req, res) => {
+  getAccount: async (req, res) => {
     try {
       const characters = await Character.find({ user: req.user.id });
-      res.render('profile.ejs', { characters: characters, user: req.user });
+      res.render('account.ejs', { characters: characters, user: req.user });
     } catch (err) {
       console.log(err);
     }
@@ -13,9 +13,9 @@ module.exports = {
   getFeed: async (req, res) => {
     try {
       const characters = await Character.find()
-        .sort({ createdAt: 'desc' })
+        .sort({ favorite: 'desc' })
         .lean();
-      res.render('feed.ejs', { characters: characters });
+      res.render('favfeed.ejs', { characters: characters });
     } catch (err) {
       console.log(err);
     }
@@ -23,7 +23,7 @@ module.exports = {
   getDashboard: async (req, res) => {
     try {
       const characters = await Character.find()
-        .sort({ favorite: 'desc', createdAt: 'desc' })
+        .sort({ favorite: 'desc', name: 'asc' })
         .lean();
       res.render('dashboard.ejs', { characters: characters, user: req.user });
     } catch (err) {
@@ -81,6 +81,7 @@ module.exports = {
       res.redirect('/dashboard');
     } catch (err) {
       console.log(err);
+      res.render('error/404.ejs')
     }
   },
   unfavoriteCharacter: async (req, res) => {
@@ -95,6 +96,7 @@ module.exports = {
       res.redirect('/dashboard');
     } catch (err) {
       console.log(err);
+      res.render('error/404.ejs')
     }
   },
   editCharacter: async (req, res) => {

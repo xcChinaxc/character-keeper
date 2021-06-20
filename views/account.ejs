@@ -1,4 +1,4 @@
-<%- include('partials/header') -%>
+<%- include('partials/navheader') -%>
 
 <main class="py-5 container">
   <div class="row justify-content-center">
@@ -11,16 +11,16 @@
 
               <!-- Heading -->
               <h2 class="fw-bold text-center mb-1">
-                Sign Up
+                Account Information
               </h2>
 
               <!-- Text -->
               <p class="fs-lg text-center text-muted mb-6 mb-md-8">
-                Use this form to create an account, or click [here] to demo Character Keeper without signing up.
+                Update your profile details below
               </p>
 
-              <!-- Sign Up Form Section -->
-              <!-- errors -->
+              <!-- Profile Form Section -->
+              <!-- errors - just in case -->
               <% if (locals.messages.errors) { %> 
                 <% messages.errors.forEach( el => { %>
                   <div class="alert alert-danger">
@@ -34,8 +34,8 @@
                   </div>
               <% }) %> <% } %>
 
-              <!-- Sign Up Form -->
-              <form action="/signup" method="POST">
+              <!-- Profile Form -->
+              <form action="#" method="POST">
                 <div class="mb-3">
                   <label for="userName" class="form-label">
                     Name
@@ -45,6 +45,7 @@
                     class="form-control" 
                     id="userName" 
                     name="userName"
+                    placeholder= req.body.user
                   />
                 </div>
                 <div class="mb-3">
@@ -62,7 +63,7 @@
                     We'll never share your email with anyone else.
                   </div>
                 </div>
-                <div class="mb-3">
+                <div class="mb-3 password-toggle">
                   <label for="password" class="form-label">
                     Password
                   </label>
@@ -73,7 +74,7 @@
                     name="password" 
                   />
                 </div>
-                <div class="mb-3">
+                <div class="mb-3 password-toggle">
                   <label for="confirmPassword" class="form-label">
                     Confirm Password
                   </label>
@@ -83,8 +84,7 @@
                     id="confirmPassword" 
                     name="confirmPassword"
                   />
-                </div>
-                <button type="submit" class="btn btn-primary mt-3 w-100">Sign Up</button>
+                <button type="submit" class="btn btn-primary mt-3 w-100">Update Profile</button>
               </form>
             </div> <!-- col-12 -->
           </div> <!-- row -->
