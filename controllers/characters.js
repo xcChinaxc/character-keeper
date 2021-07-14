@@ -1,4 +1,3 @@
-const { DEFAULT_USER } = require('../config/constants');
 const cloudinary = require('../middleware/cloudinary');
 const Character = require('../models/Character');
 
