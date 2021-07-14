@@ -7,8 +7,8 @@
       <section class="py-3 text-center container">
         <div class="row py-lg-3">
           <div class="col-lg-6 col-md-8 mx-auto">
-            <h1 class="fw-light">Welcome back, <%= user.userName %>!</h1>
-            <p class="lead text-muted">Here are your characters.</p>
+            <h1 class="fw-light">Welcome back, <%= user.userName %>.</h1>
+            <p class="lead text-muted">Your characters are ready for their next adventure!</p>
             <p>
               <a href="/newchar" class="btn btn-primary my-2">Add New Character</a>
             </p>
@@ -25,7 +25,7 @@
                 <img class="bgi-size-cover rounded max-h-225px" height="300" src="<%= el.image%>">
               </a>
               
-            <!-- card body -->
+            <!-- Card Body -->
             <div class="card-body">
               <h5 class="card-title"><%= el.name %></h5>
               <p class="card-text"><%= el.game %></p>
@@ -68,7 +68,7 @@
                     <button class="btn btn-sm fa fa-trash btn-outline-secondary" type="submit"></button>
                   </form> -->
                 </div>
-                <small class="text-muted">9 mins</small>
+                <!-- <small class="text-muted"><% el.favorite %></small> --> <!-- fix to show if character is a favorite or not. -->
               </div>
             </div>
           </div>

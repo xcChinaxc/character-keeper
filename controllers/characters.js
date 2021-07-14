@@ -1,3 +1,4 @@
+const { DEFAULT_USER } = require('../config/constants');
 const cloudinary = require('../middleware/cloudinary');
 const Character = require('../models/Character');
 
@@ -10,16 +11,26 @@ module.exports = {
       console.log(err);
     }
   },
-  getFeed: async (req, res) => {
-    try {
-      const characters = await Character.find()
-        .sort({ favorite: 'desc' })
-        .lean();
-      res.render('favfeed.ejs', { characters: characters });
-    } catch (err) {
-      console.log(err);
-    }
-  },
+  // getDemo: async (req, res) => { // working on getting a demo button - in progress
+  //   try {
+  //     const characters = await Character.find();
+  //     console.log(DEFAULT_USER)
+  //     res.render('dashboard.ejs', { characters: characters, user: req.DEFAULT_USER });
+  //   } catch (err) {
+  //     console.log(err);
+  //     res.render('error/500.ejs')
+  //   }
+  // },
+  // getFeed: async (req, res) => { // favorites feed removed temporarily
+  //   try {
+  //     const characters = await Character.find()
+  //       .sort({ favorite: 'desc' })
+  //       .lean();
+  //     res.render('favfeed.ejs', { characters: characters });
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // },
   getDashboard: async (req, res) => {
     try {
       const characters = await Character.find()
@@ -101,21 +112,21 @@ module.exports = {
   },
   editCharacter: async (req, res) => {
     try {
-      console.log(req.body)
       await Character.findOneAndUpdate(
         { _id: req.params.id }, {
           name: req.body.name, 
           game: req.body.game,
-          notes: req.body.quillNotes
+          notes: req.body.notes
         },
         {
           new: true,
           runValidators: true
         })
       console.log('Character has been editted!')
-      location.reload();
+      res.redirect('/dashboard')
     } catch (err) {
-      res.redirect('/dashboard');
+      console.log(err);
+      res.render('error/404.ejs')
     }
   },
   deleteCharacter: async (req, res) => {
@@ -125,7 +136,7 @@ module.exports = {
       // Delete image from cloudinary
       await cloudinary.uploader.destroy(characters.cloudinaryId);
       // Delete character from db
-      await Character.remove({ _id: req.params.id });
+      await Character.deleteOne({ _id: req.params.id });
       console.log('Deleted Character');
       res.redirect('/dashboard');
     } catch (err) {
